@@ -27,7 +27,7 @@ interface YouTubeVideo {
 
 export default async function Home() {
   const videos: YouTubeVideo[] = await fetchVideos();
-  // console.log(videos, "videos");
+  console.log(videos, "videos");
   return (
     <main className="container">
       <nav className="navbar">
@@ -72,24 +72,37 @@ export default async function Home() {
         <h2>Latest Videos</h2>
 
         <div className="cards">
-          {videos.map((video: YouTubeVideo) => {
-            const vid = video.id.videoId;
-            const { title, thumbnails } = video.snippet;
+          {videos.length === 0 ? (
+            <a
+              href={`https://youtube.com/@npcplayzzz?si=VbRhr97wpWvrLFqs`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="card"
+            >
+              <Image src={logo} alt="No videos yet" />
+              <p className="video-title">More Videos 🎮🔥</p>
+              <span className="badge-new">NEW</span>
+            </a>
+          ) : (
+            videos.map((video: YouTubeVideo) => {
+              const vid = video.id.videoId;
+              const { title, thumbnails } = video.snippet;
 
-            return (
-              <a
-                key={vid}
-                href={`https://www.youtube.com/watch?v=${vid}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="card"
-              >
-                <img src={thumbnails.high.url} alt={title} />
-                <p className="video-title">{title}</p>
-                <span>NEW</span>
-              </a>
-            );
-          })}
+              return (
+                <a
+                  key={vid}
+                  href={`https://www.youtube.com/watch?v=${vid}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="card"
+                >
+                  <img src={thumbnails.high.url} alt={title} />
+                  <p className="video-title">{title}</p>
+                  <span className="badge-new">NEW</span>
+                </a>
+              );
+            })
+          )}
         </div>
       </section>
       <section className="motions-frame">
