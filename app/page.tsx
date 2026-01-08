@@ -92,7 +92,7 @@ export default async function Home() {
           })}
         </div>
       </section>
-      <section className="video-frame">
+      <section className="motions-frame">
         <video
           src="/videos/bgmi-loop.mp4"
           autoPlay
