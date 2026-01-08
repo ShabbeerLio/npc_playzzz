@@ -27,7 +27,7 @@ interface YouTubeVideo {
 
 export default async function Home() {
   const videos: YouTubeVideo[] = await fetchVideos();
-  console.log(videos, "videos");
+  // console.log(videos, "videos");
   return (
     <main className="container">
       <nav className="navbar">
