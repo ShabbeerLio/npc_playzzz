@@ -240,7 +240,7 @@ body {
   z-index: 6;
 }
 .box {
-  height: 180vh;
+  height: 220vh;
   position: relative;
   overflow: hidden;
   background-color: #060010;
@@ -259,6 +259,8 @@ body {
   margin: 0;
   letter-spacing: 15px;
   text-transform: uppercase;
+  transform: scale(1,1.5);
+  padding-top: 20px;
 }
 
 .video-frame {
@@ -330,6 +332,7 @@ body {
     top: 0;
     left: 0;
     letter-spacing: 17px;
+     transform: scale(1,2);
   }
   .video-frame {
   height: 40vh;
