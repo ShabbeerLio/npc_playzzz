@@ -53,7 +53,7 @@ export default async function Home() {
         <h2>Latest Videos</h2>
 
         <div className="cards">
-          {videos.map((video : any) => {
+          {videos.map((video) => {
             const vid = video.id.videoId;
             const { title, thumbnails } = video.snippet;
 
