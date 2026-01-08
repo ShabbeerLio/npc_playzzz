@@ -5,9 +5,29 @@ import Image from "next/image";
 import Link from "next/link";
 import about from "../Assets/image2.jpg";
 
+interface YouTubeVideo {
+  id: {
+    videoId: string;
+  };
+  snippet: {
+    title: string;
+    thumbnails: {
+      high: {
+        url: string;
+      };
+      medium: {
+        url: string;
+      };
+      default: {
+        url: string;
+      };
+    };
+  };
+}
+
 export default async function Home() {
   const videos: YouTubeVideo[] = await fetchVideos();
-  // console.log(videos, "videos");
+  console.log(videos, "videos");
   return (
     <main className="container">
       {/* Navbar */}
@@ -67,6 +87,7 @@ export default async function Home() {
               >
                 <img src={thumbnails.high.url} alt={title} />
                 <p className="video-title">{title}</p>
+                <span>NEW</span>
               </a>
             );
           })}

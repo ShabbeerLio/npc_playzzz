@@ -148,6 +148,16 @@ body {
   color: white;
   padding: 1rem;
 }
+.card span{
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: #780096;
+  color: white;
+  border-radius: 20px;
+  padding: 5px 10px;
+  font-size: 14px;
+}
 
 /* About */
 .about {
