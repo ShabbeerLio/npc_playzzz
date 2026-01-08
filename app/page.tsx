@@ -1,9 +1,13 @@
-import LaserFlow from "../components/LaserFlow";
 import Box from "../components/Box";
 import logo from "../Assets/NPC_PlayZzz_logo-removebg-preview.png";
+import { fetchVideos } from "@/lib/youtube";
 import Image from "next/image";
+import Link from "next/link";
+import about from "../Assets/image2.jpg";
 
-export default function Home() {
+export default async function Home() {
+  const videos = await fetchVideos();
+  // console.log(videos, "videos");
   return (
     <main className="container">
       {/* Navbar */}
@@ -12,19 +16,32 @@ export default function Home() {
           <Image alt="Logo" src={logo} fill sizes="100%" />
         </div>
 
-        <button className="btn neon">Subscribe</button>
+        <Link
+          href="https://youtube.com/@npcplayzzz?si=ObUpu2dV2tcuQzgk"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <button className="btn neon">Subscribe</button>
+        </Link>
       </nav>
 
       {/* Hero Section */}
       <section className="hero">
         <div className="hero-right">
+          <span>Welcome</span>
           <h1>
             NPC_Play<span>Zz</span>
             <span>z</span>
           </h1>
-          <p>Welcome to NPC_playZzz</p>
+          <p>Let the Game Begin</p>
           <p> Epic gameplay • Moments • Live streams</p>
-          <button className="btn big">Join the Channel</button>
+          <Link
+            href="https://youtube.com/@npcplayzzz?si=ObUpu2dV2tcuQzgk"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <button className="btn big">Join the Channel</button>
+          </Link>
           <div className="hero-background">
             <Box />
           </div>
@@ -34,23 +51,47 @@ export default function Home() {
       {/* Videos */}
       <section className="videos">
         <h2>Latest Videos</h2>
+
         <div className="cards">
-          <div className="card">EPIC GAMEPLAY</div>
-          <div className="card">NPC MOMENTS</div>
-          <div className="card">TOP 5 PLAYS</div>
-          <div className="card">TOP 5 PLAYS</div>
-          <div className="card">TOP 5 PLAYS</div>
-          <div className="card">TOP 5 PLAYS</div>
+          {videos.map((video) => {
+            const vid = video.id.videoId;
+            const { title, thumbnails } = video.snippet;
+
+            return (
+             
+                <a
+                  key={vid}
+                  href={`https://www.youtube.com/watch?v=${vid}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  // className="card yt-card"
+                  className="card"
+                >
+                  <img src={thumbnails.high.url} alt={title} />
+                  <p className="video-title">{title}</p>
+                </a>
+              
+            );
+          })}
         </div>
       </section>
 
       {/* About */}
       <section className="about">
-        <h2>About NPC_PlayZzz</h2>
-        <p>
-          A gaming channel focused on intense gameplay, funny moments, and
-          community-driven streams.
-        </p>
+        <div className="about-left">
+          <Image alt="Logo" src={about} fill sizes="100%" />
+        </div>
+        <div className="about-right">
+          <span>About</span>
+          <h2>NPC_PlayZzz</h2>
+          <p>
+            NPC_PlayZzz is a fun-packed gaming channel where intense gameplay meets hilarious moments. From clutch BGMI fights to unexpected fails and epic squad chaos, this channel is all about entertainment and good vibes. 
+          </p>
+          <p>Every video is crafted to make you laugh, stay hooked, and enjoy the game from a fresh perspective. Whether it’s funny commentary, insane plays, or relatable gaming struggles, NPC_PlayZzz brings the raw fun of gaming straight to your screen. Join the community, support the grind, and be part of a growing family that loves games, humor, and nonstop action. 🎮🔥</p>
+        </div>
+      </section>
+      <section className="attractive">
+        <h1>Gaming</h1>
       </section>
 
       {/* Footer */}

@@ -38,7 +38,7 @@ export default function Box() {
           {/* Your content here */}
         </div>
 
-        <img
+        {/* <img
           ref={revealImgRef}
           src="/path/to/image.jpg"
           alt="Reveal effect"
@@ -59,7 +59,7 @@ export default function Box() {
             WebkitMaskRepeat: "no-repeat",
             maskRepeat: "no-repeat",
           }}
-        />
+        /> */}
       </div>
     </>
   );
