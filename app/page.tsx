@@ -30,7 +30,6 @@ export default async function Home() {
   console.log(videos, "videos");
   return (
     <main className="container">
-      {/* Navbar */}
       <nav className="navbar">
         <div className="logo">
           <Image alt="Logo" src={logo} fill sizes="100%" />
