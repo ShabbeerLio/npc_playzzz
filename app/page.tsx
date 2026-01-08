@@ -92,6 +92,16 @@ export default async function Home() {
           })}
         </div>
       </section>
+      <section className="video-frame">
+        <video
+          src="/videos/bgmi-loop.mp4"
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="bg-video"
+        />
+      </section>
 
       {/* About */}
       <section className="about">
