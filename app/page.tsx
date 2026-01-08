@@ -6,7 +6,7 @@ import Link from "next/link";
 import about from "../Assets/image2.jpg";
 
 export default async function Home() {
-  const videos = await fetchVideos();
+  const videos: YouTubeVideo[] = await fetchVideos();
   // console.log(videos, "videos");
   return (
     <main className="container">
@@ -53,24 +53,21 @@ export default async function Home() {
         <h2>Latest Videos</h2>
 
         <div className="cards">
-          {videos.map((video) => {
+          {videos.map((video: YouTubeVideo) => {
             const vid = video.id.videoId;
             const { title, thumbnails } = video.snippet;
 
             return (
-             
-                <a
-                  key={vid}
-                  href={`https://www.youtube.com/watch?v=${vid}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  // className="card yt-card"
-                  className="card"
-                >
-                  <img src={thumbnails.high.url} alt={title} />
-                  <p className="video-title">{title}</p>
-                </a>
-              
+              <a
+                key={vid}
+                href={`https://www.youtube.com/watch?v=${vid}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="card"
+              >
+                <img src={thumbnails.high.url} alt={title} />
+                <p className="video-title">{title}</p>
+              </a>
             );
           })}
         </div>
@@ -85,9 +82,19 @@ export default async function Home() {
           <span>About</span>
           <h2>NPC_PlayZzz</h2>
           <p>
-            NPC_PlayZzz is a fun-packed gaming channel where intense gameplay meets hilarious moments. From clutch BGMI fights to unexpected fails and epic squad chaos, this channel is all about entertainment and good vibes. 
+            NPC_PlayZzz is a fun-packed gaming channel where intense gameplay
+            meets hilarious moments. From clutch BGMI fights to unexpected fails
+            and epic squad chaos, this channel is all about entertainment and
+            good vibes.
           </p>
-          <p>Every video is crafted to make you laugh, stay hooked, and enjoy the game from a fresh perspective. Whether it’s funny commentary, insane plays, or relatable gaming struggles, NPC_PlayZzz brings the raw fun of gaming straight to your screen. Join the community, support the grind, and be part of a growing family that loves games, humor, and nonstop action. 🎮🔥</p>
+          <p>
+            Every video is crafted to make you laugh, stay hooked, and enjoy the
+            game from a fresh perspective. Whether it’s funny commentary, insane
+            plays, or relatable gaming struggles, NPC_PlayZzz brings the raw fun
+            of gaming straight to your screen. Join the community, support the
+            grind, and be part of a growing family that loves games, humor, and
+            nonstop action. 🎮🔥
+          </p>
         </div>
       </section>
       <section className="attractive">
